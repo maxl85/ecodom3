@@ -55,12 +55,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'django_session_timeout.middleware.SessionTimeoutMiddleware',
+
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
 
 # SESSION_EXPIRE_SECONDS = 3600  # 1 hour
 # SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 # SESSION_TIMEOUT_REDIRECT = 'accounts/login'
+
+# AUTH_USER_MODEL = 'accounts.Account'
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -76,8 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'category.context_processors.menu_links',
-                # 'carts.context_processors.counter',
+                'category.context_processors.menu_links',
+                'carts.context_processors.counter',
             ],
         },
     },
@@ -85,7 +88,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-# AUTH_USER_MODEL = 'accounts.Account'
+
 
 
 # Database
@@ -136,7 +139,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR /'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     'mysite/static',
 ]
@@ -149,7 +152,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # media files configuration
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR /'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # from django.contrib.messages import constants as messages
 # MESSAGE_TAGS = {

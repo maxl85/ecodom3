@@ -185,7 +185,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'tax'       : tax,
         'grand_total': grand_total,
     }
-    return render(request, 'store/cart.html', context)
+    return render(request, 'carts/cart.html', context)
 
 
 @login_required(login_url='login')
@@ -213,4 +213,4 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         'tax'       : tax,
         'grand_total': grand_total,
     }
-    return render(request, 'store/checkout.html', context)
+    return render(request, 'carts/checkout.html', context)

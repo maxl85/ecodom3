@@ -5,19 +5,55 @@
 
 
 
-<!-- ========================= SECTION MAIN ========================= -->
+<!-- ========================= КАРУСЕЛЬ ========================= -->
 <section class="section-intro padding-y-sm">
     <div class="container">
-
-        {% comment %} Вставить сюда карусель
-        <div class="intro-banner-wrap">
-            <img src="{% static 'images/banners/cover.jpg' %}" class="img-fluid rounded">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active " data-bs-interval="5000">
+                    <img src="{% static 'images/carousel1.png' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>ОПЕРАТИВНАЯ ДОСТАВКА</h5>
+                        <p>Заказавшему товар на сайте, доставка в пределах города и по области!</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="{% static 'images/carousel2.png' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>ГАЗОБЛОК И КИРПИЧ</h5>
+                        <p>Только у нас - качество, гарантия и оперативная доставка</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="{% static 'images/carousel3.png' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>ЭЛЕКТРО И БЕНЗОИНСТРУМЕНТ</h5>
+                        <p>HUTER - немецкое качество!</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        {% endcomment %}
-
     </div>
 </section>
-<!-- ========================= SECTION MAIN END ========================= -->
+<!-- ========================= КАРУСЕЛЬ END ========================= -->
 
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name padding-y-sm">
