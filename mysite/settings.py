@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'shop.apps.ShopConfig',
+    'category.apps.CategoryConfig',
+    'accounts.apps.AccountsConfig',
+    'carts.apps.CartsConfig',
+    'orders.apps.OrdersConfig',
+    # 'admin_honeypot', # Нет приложения admin_honeypot. Удалить?
 ]
 
 MIDDLEWARE = [
@@ -49,14 +55,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
+
+# SESSION_EXPIRE_SECONDS = 3600  # 1 hour
+# SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+# SESSION_TIMEOUT_REDIRECT = 'accounts/login'
 
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,12 +76,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'category.context_processors.menu_links',
+                # 'carts.context_processors.counter',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
+
+# AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Database
@@ -111,6 +127,8 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+# USE_L10N = True
+
 USE_TZ = True
 
 
@@ -118,8 +136,30 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR /'static'
+STATICFILES_DIRS = [
+    'mysite/static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# media files configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR /'media'
+
+# from django.contrib.messages import constants as messages
+# MESSAGE_TAGS = {
+#     messages.ERROR: 'danger',
+# }
+
+
+# # SMTP configuration
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'youremailaddress@gmail.com'
+# EMAIL_HOST_PASSWORD = 'yourStrongPassword'
+# EMAIL_USE_TLS = True
