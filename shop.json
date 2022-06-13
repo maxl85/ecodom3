@@ -1,0 +1,218 @@
+[
+{
+  "model": "shop.product",
+  "pk": 1,
+  "fields": {
+    "product_name": "Шифер 7-волн (1,75*0,98*5,2) ТУ",
+    "slug": "shifer-7-voln-17509852-tu",
+    "description": "Шифер 7-волн (1,75*0,98*5,2) ТУ Шифер 7-волн (1,75*0,98*5,2) ТУ Шифер 7-волн (1,75*0,98*5,2) ТУ",
+    "price": 100,
+    "images": "photos/products/8898690569ad3681fb1d903dede3f061.jpg",
+    "stock": 5,
+    "is_available": true,
+    "category": 1,
+    "created_date": "2022-06-13T09:44:18.997Z",
+    "modified_date": "2022-06-13T09:44:18.997Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 2,
+  "fields": {
+    "product_name": "Шифер 8-волн (1,75*0,98*5,2) ТУ",
+    "slug": "shifer-8-voln-17509852-tu",
+    "description": "Шифер 8-волн (1,75*0,98*5,2) ТУ Шифер 8-волн (1,75*0,98*5,2) ТУ Шифер 8-волн (1,75*0,98*5,2) ТУ",
+    "price": 100,
+    "images": "photos/products/noimage_product.png",
+    "stock": 5,
+    "is_available": true,
+    "category": 1,
+    "created_date": "2022-06-13T09:45:09.967Z",
+    "modified_date": "2022-06-13T09:45:09.967Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 3,
+  "fields": {
+    "product_name": "Арматура 10мм А500С",
+    "slug": "armatura-10mm-a500s",
+    "description": "Арматура 10мм А500С Арматура 10мм А500С Арматура 10мм А500С",
+    "price": 150,
+    "images": "photos/products/e51ea403e94ded6e5c745c01382acbb0.jpg",
+    "stock": 1,
+    "is_available": true,
+    "category": 2,
+    "created_date": "2022-06-13T09:45:58.862Z",
+    "modified_date": "2022-06-13T09:45:58.862Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 4,
+  "fields": {
+    "product_name": "Арматура 20мм А500С",
+    "slug": "armatura-20mm-a500s",
+    "description": "Арматура 20мм А500С Арматура 20мм А500С Арматура 20мм А500С Арматура 20мм А500С Арматура 20мм А500С Арматура 20мм А500С Арматура 20мм А500С Арматура 20мм А500С",
+    "price": 300,
+    "images": "photos/products/edcb93ada34e41315ed3845980ec9f64.jpg",
+    "stock": 2,
+    "is_available": true,
+    "category": 2,
+    "created_date": "2022-06-13T09:46:41.795Z",
+    "modified_date": "2022-06-13T09:46:41.795Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 5,
+  "fields": {
+    "product_name": "Арматура 30мм А500С",
+    "slug": "armatura-30mm-a500s",
+    "description": "Арматура 30мм А500С Арматура 30мм А500С Арматура 30мм А500С",
+    "price": 150,
+    "images": "photos/products/e51ea403e94ded6e5c745c01382acbb0_vyWkjzH.jpg",
+    "stock": 3,
+    "is_available": true,
+    "category": 2,
+    "created_date": "2022-06-13T11:04:19.171Z",
+    "modified_date": "2022-06-13T11:04:19.171Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 6,
+  "fields": {
+    "product_name": "Арматура 40мм А500С",
+    "slug": "armatura-40mm-a500s",
+    "description": "Арматура 40мм А500С Арматура 40мм А500С Арматура 40мм А500С Арматура 40мм А500С",
+    "price": 300,
+    "images": "photos/products/cee61eef95e66d2f9353d2b5610767af.png",
+    "stock": 10,
+    "is_available": true,
+    "category": 2,
+    "created_date": "2022-06-13T11:05:00.935Z",
+    "modified_date": "2022-06-13T11:05:00.935Z"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "image": "store/products/8898690569ad3681fb1d903dede3f061.jpg"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "image": "store/products/edcb93ada34e41315ed3845980ec9f64.jpg"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 3,
+  "fields": {
+    "product": 1,
+    "image": "store/products/noimage_product.png"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 4,
+  "fields": {
+    "product": 2,
+    "image": "store/products/noimage_product_2XLDHc8.png"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 5,
+  "fields": {
+    "product": 2,
+    "image": "store/products/edcb93ada34e41315ed3845980ec9f64_grSNpY5.jpg"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 6,
+  "fields": {
+    "product": 2,
+    "image": "store/products/8898690569ad3681fb1d903dede3f061_NP1hjDB.jpg"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 7,
+  "fields": {
+    "product": 3,
+    "image": "store/products/cee61eef95e66d2f9353d2b5610767af.png"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 8,
+  "fields": {
+    "product": 3,
+    "image": "store/products/edcb93ada34e41315ed3845980ec9f64_8yMsrDv.jpg"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 9,
+  "fields": {
+    "product": 4,
+    "image": "store/products/8898690569ad3681fb1d903dede3f061_8D6OiqT.jpg"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 10,
+  "fields": {
+    "product": 4,
+    "image": "store/products/cee61eef95e66d2f9353d2b5610767af_xWxfO8Q.png"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 11,
+  "fields": {
+    "product": 4,
+    "image": "store/products/e51ea403e94ded6e5c745c01382acbb0.jpg"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 12,
+  "fields": {
+    "product": 5,
+    "image": "store/products/8898690569ad3681fb1d903dede3f061_KBlsJtc.jpg"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 13,
+  "fields": {
+    "product": 5,
+    "image": "store/products/cee61eef95e66d2f9353d2b5610767af_PL6G4Lx.png"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 14,
+  "fields": {
+    "product": 6,
+    "image": "store/products/cee61eef95e66d2f9353d2b5610767af_GaEbNYu.png"
+  }
+},
+{
+  "model": "shop.productgallery",
+  "pk": 15,
+  "fields": {
+    "product": 6,
+    "image": "store/products/bf48e8ce64560c070fe79cf23ce4a9c4.jpg"
+  }
+}
+]

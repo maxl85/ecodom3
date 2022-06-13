@@ -2,9 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-# Create your models here.
-
-class MyAccountManager(BaseUserManager):
+class MyUserManager(BaseUserManager):
     def create_user(self, first_name, last_name, username, email, password=None):
         if not email:
             raise ValueError('User must have an email address')
@@ -34,17 +32,17 @@ class MyAccountManager(BaseUserManager):
         user.is_admin = True
         user.is_active = True
         user.is_staff = True
-        user.is_superadmin = True
+        user.is_superadmin = True # Зачем этот пользователь? Удалить?
         user.save(using=self._db)
         return user
 
 
 
-class Account(AbstractBaseUser):
+class MyUser(AbstractBaseUser):
     first_name      = models.CharField(max_length=50)
     last_name       = models.CharField(max_length=50)
     username        = models.CharField(max_length=50, unique=True)
-    email           = models.EmailField(max_length=100, unique=True)
+    email           = models.EmailField(max_length=255, unique=True)
     phone_number    = models.CharField(max_length=50)
 
     # required
@@ -52,13 +50,13 @@ class Account(AbstractBaseUser):
     last_login      = models.DateTimeField(auto_now_add=True)
     is_admin        = models.BooleanField(default=False)
     is_staff        = models.BooleanField(default=False)
-    is_active        = models.BooleanField(default=False)
-    is_superadmin        = models.BooleanField(default=False)
+    is_active       = models.BooleanField(default=False)
+    is_superadmin   = models.BooleanField(default=False) # Зачем этот пользователь? Удалить?
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
-    objects = MyAccountManager()
+    objects = MyUserManager()
 
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
@@ -67,14 +65,24 @@ class Account(AbstractBaseUser):
         return self.email
 
     def has_perm(self, perm, obj=None):
+        "Does the user have a specific permission?"
         return self.is_admin
 
     def has_module_perms(self, add_label):
+        "Does the user have permissions to view the app 'app_label'?"
         return True
+    
+    # Этот код есть в примере на сайте джанго. Добавить себе?
+    # https://docs.djangoproject.com/en/4.0/topics/auth/customizing/#a-full-example
+    # @property
+    # def is_staff(self):
+    #     "Is the user a member of staff?"
+    #     # Simplest possible answer: All admins are staff
+    #     return self.is_admin
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    user = models.OneToOneField(MyUser, on_delete=models.CASCADE)
     address_line_1 = models.CharField(blank=True, max_length=100)
     address_line_2 = models.CharField(blank=True, max_length=100)
     profile_picture = models.ImageField(blank=True, upload_to='userprofile')

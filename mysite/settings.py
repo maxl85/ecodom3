@@ -59,12 +59,6 @@ MIDDLEWARE = [
     'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
 
-# SESSION_EXPIRE_SECONDS = 3600  # 1 hour
-# SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
-# SESSION_TIMEOUT_REDIRECT = 'accounts/login'
-
-# AUTH_USER_MODEL = 'accounts.Account'
-
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
@@ -160,9 +154,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # }
 
 
+SESSION_EXPIRE_SECONDS = 3600  # 1 hour
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_TIMEOUT_REDIRECT = 'accounts/login'
+
+AUTH_USER_MODEL = 'accounts.MyUser'
+
 # SMTP configuration
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'youremailaddress@gmail.com'
 EMAIL_HOST_PASSWORD = 'yourStrongPassword'
 EMAIL_USE_TLS = True
+

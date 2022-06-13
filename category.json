@@ -1,0 +1,62 @@
+[
+{
+  "model": "category.category",
+  "pk": 1,
+  "fields": {
+    "category_name": "Шифер",
+    "slug": "shifer",
+    "description": "Шифер Шифер Шифер Шифер",
+    "cat_image": "photos/categories/8898690569ad3681fb1d903dede3f061.jpg"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 2,
+  "fields": {
+    "category_name": "Арматура",
+    "slug": "armatura",
+    "description": "Арматура Арматура Арматура Арматура",
+    "cat_image": "photos/categories/e51ea403e94ded6e5c745c01382acbb0.jpg"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 3,
+  "fields": {
+    "category_name": "Двутавр",
+    "slug": "dvutavr",
+    "description": "",
+    "cat_image": ""
+  }
+},
+{
+  "model": "category.category",
+  "pk": 4,
+  "fields": {
+    "category_name": "Трубы круглые",
+    "slug": "truby-kruglye",
+    "description": "",
+    "cat_image": ""
+  }
+},
+{
+  "model": "category.category",
+  "pk": 5,
+  "fields": {
+    "category_name": "Трубы профильные",
+    "slug": "truby-profilnye",
+    "description": "",
+    "cat_image": ""
+  }
+},
+{
+  "model": "category.category",
+  "pk": 6,
+  "fields": {
+    "category_name": "Швеллеры",
+    "slug": "shvellery",
+    "description": "",
+    "cat_image": ""
+  }
+}
+]
