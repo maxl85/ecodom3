@@ -32,7 +32,6 @@ class MyUserManager(BaseUserManager):
         user.is_admin = True
         user.is_active = True
         user.is_staff = True
-        user.is_superadmin = True # Зачем этот пользователь? Удалить?
         user.save(using=self._db)
         return user
 
@@ -51,7 +50,6 @@ class MyUser(AbstractBaseUser):
     is_admin        = models.BooleanField(default=False)
     is_staff        = models.BooleanField(default=False)
     is_active       = models.BooleanField(default=False)
-    is_superadmin   = models.BooleanField(default=False) # Зачем этот пользователь? Удалить?
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
@@ -72,26 +70,14 @@ class MyUser(AbstractBaseUser):
         "Does the user have permissions to view the app 'app_label'?"
         return True
     
-    # Этот код есть в примере на сайте джанго. Добавить себе?
-    # https://docs.djangoproject.com/en/4.0/topics/auth/customizing/#a-full-example
-    # @property
-    # def is_staff(self):
-    #     "Is the user a member of staff?"
-    #     # Simplest possible answer: All admins are staff
-    #     return self.is_admin
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(MyUser, on_delete=models.CASCADE)
-    address_line_1 = models.CharField(blank=True, max_length=100)
-    address_line_2 = models.CharField(blank=True, max_length=100)
+    address_line = models.CharField(blank=True, max_length=255)
     profile_picture = models.ImageField(blank=True, upload_to='userprofile')
     city = models.CharField(blank=True, max_length=20)
-    state = models.CharField(blank=True, max_length=20)
-    country = models.CharField(blank=True, max_length=20)
 
     def __str__(self):
         return self.user.first_name
 
-    def full_address(self):
-        return f'{self.address_line_1} {self.address_line_2}'
