@@ -71,43 +71,34 @@ def login(request):
         if user is not None:
             try:
                 cart = Cart.objects.get(cart_id=_cart_id(request))
-                is_cart_item_exists = CartItem.objects.filter(cart=cart).exists()
+                is_cart_item_exists = CartItem.objects.filter(cart=cart).exists() # Куча запросов!!!! Оптимизировать
                 if is_cart_item_exists:
-                    cart_item = CartItem.objects.filter(cart=cart)
-
-                    # Getting the product variations by cart id
-                    product_variation = []
-                    for item in cart_item:
-                        variation = item.variations.all()
-                        product_variation.append(list(variation))
                     
-                    # print('!!!!!!!   ', cart_item)
-
-                    # Get the cart items from the user to access his product variations
-                    cart_item = CartItem.objects.filter(user=user)
-                    ex_var_list = []
-                    id = []
+                    # Getting the products by cart id
+                    cart_item = CartItem.objects.filter(cart=cart)
+                    # a = cart_item.get()
+                    products_cart = []
                     for item in cart_item:
-                        existing_variation = item.variations.all()
-                        ex_var_list.append(list(existing_variation))
-                        id.append(item.id)
-
-                    # product_variation = [1, 2, 3, 4, 6]
-                    # ex_var_list = [4, 6, 3, 5]
-
-                    for pr in product_variation:
-                        if pr in ex_var_list:
-                            index = ex_var_list.index(pr)
-                            item_id = id[index]
-                            item = CartItem.objects.get(id=item_id)
-                            item.quantity += 1
-                            item.user = user
-                            item.save()
+                        prod = item.product
+                        products_cart.append(prod)
+                    
+                    # Getting the products by user id
+                    user_cart_item = CartItem.objects.filter(user=user)
+                    products_user = []
+                    for item in user_cart_item:
+                        prod = item.product
+                        products_user.append(prod)
+                    
+                    for pr in products_cart:
+                        if pr in products_user:
+                            user_cart_item = CartItem.objects.get(product=pr, user=user)
+                            cart_item = CartItem.objects.get(product=pr, cart=cart)
+                            user_cart_item.quantity += cart_item.quantity
+                            user_cart_item.save()
                         else:
-                            cart_item = CartItem.objects.filter(cart=cart)
-                            for item in cart_item:
-                                item.user = user
-                                item.save()
+                            cart_item = CartItem.objects.get(product=pr, cart=cart)
+                            user_cart_item = CartItem.objects.create(product=pr, quantity=cart_item.quantity, user=user)
+                            user_cart_item.save()
             except:
                 pass
             auth.login(request, user)
