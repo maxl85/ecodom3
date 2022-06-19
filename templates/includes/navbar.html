@@ -29,25 +29,10 @@
                         <img class="logo" src="{% static '/images/logo.png' %}">
                     </a>
                 </div>
-                {% comment %}
-                <div class="col-lg col-sm col-md col-6 flex-grow-0">
-                    <div class="category-wrap dropdown d-inline-block float-right">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bars"></i> All category
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{% url 'store' %}">All Products </a>
-                            {% for category in links %}
-                            <a class="dropdown-item" href="{{ category.get_url }}">{{ category.category_name }} </a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                {% endcomment %}
                 <div class="col-lg col-sm col-md col-6 flex-grow-0">
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-bars"></i>
                             Каталог
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

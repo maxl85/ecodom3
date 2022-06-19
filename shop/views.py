@@ -1,20 +1,18 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from .models import Product, ProductGallery
 from category.models import Category
 from carts.models import CartItem
 from django.db.models import Q
 
 from carts.views import _cart_id
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.contrib import messages
+from django.core.paginator import Paginator
 from orders.models import OrderProduct
 
 
 def home(request):
-    products = Product.objects.all().filter(is_available=True).order_by('created_date')
+    products = Product.objects.filter(is_available=True).order_by('created_date')
     context = {'products': products,}
     return render(request, 'shop/home.html', context)
-
 
 
 def store(request, category_slug=None):
@@ -23,14 +21,13 @@ def store(request, category_slug=None):
 
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
-        products = Product.objects.filter(
-            category=categories, is_available=True)
+        products = Product.objects.filter(category=categories, is_available=True)
         paginator = Paginator(products, 1)
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
         product_count = products.count()
     else:
-        products = Product.objects.all().filter(is_available=True).order_by('id')
+        products = Product.objects.filter(is_available=True).order_by('id')
         paginator = Paginator(products, 3)
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
