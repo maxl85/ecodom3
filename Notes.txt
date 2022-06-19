@@ -2,7 +2,10 @@
 https://www.youtube.com/playlist?list=PL-51WBLyFTg0omnamUjL1TCVov7yDTRng
 
 
-- Убрать лишние поля в MyUser
+- Убрать полу username в MyUser ???
 + Проверить регистрацию
 - Сделать перелистывание картинок
 - Сделать картинку по умолчанию для пользователя
+
+
+- Оптимизировать SQL-запросы
