@@ -98,21 +98,10 @@ def login(request):
                             cart_prod = cart_item.filter(product=prod).first()
                             user_cart_item = CartItem.objects.create(product=prod, quantity=cart_prod.quantity, user=user)
                             # user_cart_item.save()
-
-                    # for pr in products_cart:
-                    #     if pr in products_user:
-                    #         user_cart_item = CartItem.objects.get(product=pr, user=user)
-                    #         cart_item = CartItem.objects.get(product=pr, cart=cart)
-                    #         user_cart_item.quantity += cart_item.quantity
-                    #         user_cart_item.save()
-                    #     else:
-                    #         cart_item = CartItem.objects.get(product=pr, cart=cart)
-                    #         user_cart_item = CartItem.objects.create(product=pr, quantity=cart_item.quantity, user=user)
-                    #         user_cart_item.save()
             except:
                 pass
             auth.login(request, user)
-            messages.success(request, 'You are now logged in.')
+            messages.success(request, 'Вы вошли в систему.')
             url = request.META.get('HTTP_REFERER')   # Разобраться с этим кодом. Что он делает????
             try:
                 query = requests.utils.urlparse(url).query
@@ -132,7 +121,7 @@ def login(request):
 @login_required(login_url = 'login')
 def logout(request):
     auth.logout(request)
-    messages.success(request, 'You are logged out.')
+    messages.success(request, 'Вы вышли из системы.')
     return redirect('login')
 
 

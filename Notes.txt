@@ -14,6 +14,7 @@ https://www.youtube.com/playlist?list=PL-51WBLyFTg0omnamUjL1TCVov7yDTRng
 - Добавить хэширование
 - Убрать закоментированный код
 - Добавить онлайн оплату по карте МИР ????
+- Перевести все на русский
 
 
 
