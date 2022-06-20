@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from carts.models import CartItem
 from .forms import OrderForm
 import datetime
@@ -42,13 +42,6 @@ def payments(request):
         orderproduct.ordered = True
         orderproduct.save()
 
-        cart_item = CartItem.objects.get(id=item.id)
-        # product_variation = cart_item.variations.all()
-        orderproduct = OrderProduct.objects.get(id=orderproduct.id)
-        # orderproduct.variations.set(product_variation)
-        orderproduct.save()
-
-
         # Reduce the quantity of the sold products
         product = Product.objects.get(id=item.product_id)
         product.stock -= item.quantity
@@ -58,14 +51,14 @@ def payments(request):
     CartItem.objects.filter(user=request.user).delete()
 
     # Send order recieved email to customer
-    mail_subject = 'Thank you for your order!'
-    message = render_to_string('orders/order_recieved_email.html', {
-        'user': request.user,
-        'order': order,
-    })
-    to_email = request.user.email
-    send_email = EmailMessage(mail_subject, message, to=[to_email])
-    send_email.send()
+    # mail_subject = 'Thank you for your order!'
+    # message = render_to_string('orders/order_recieved_email.html', {
+    #     'user': request.user,
+    #     'order': order,
+    # })
+    # to_email = request.user.email
+    # send_email = EmailMessage(mail_subject, message, to=[to_email])
+    # send_email.send()
 
     # Send order number and transaction id back to sendData method via JsonResponse
     data = {
@@ -83,13 +76,13 @@ def place_order(request, total=0, quantity=0,):
     if cart_count <= 0:
         return redirect('store')
 
-    grand_total = 0
-    tax = 0
+    # grand_total = 0
+    # tax = 0
     for cart_item in cart_items:
         total += (cart_item.product.price * cart_item.quantity)
         quantity += cart_item.quantity
-    tax = (2 * total)/100
-    grand_total = total + tax
+    # tax = (2 * total)/100
+    # grand_total = total + tax
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -101,16 +94,14 @@ def place_order(request, total=0, quantity=0,):
             data.last_name = form.cleaned_data['last_name']
             data.phone = form.cleaned_data['phone']
             data.email = form.cleaned_data['email']
-            data.address_line_1 = form.cleaned_data['address_line_1']
-            data.address_line_2 = form.cleaned_data['address_line_2']
-            data.country = form.cleaned_data['country']
-            data.state = form.cleaned_data['state']
+            data.address_line = form.cleaned_data['address_line']
             data.city = form.cleaned_data['city']
             data.order_note = form.cleaned_data['order_note']
-            data.order_total = grand_total
-            data.tax = tax
+            data.order_total = total
+            # data.tax = tax
             data.ip = request.META.get('REMOTE_ADDR')
             data.save()
+
             # Generate order number
             yr = int(datetime.date.today().strftime('%Y'))
             dt = int(datetime.date.today().strftime('%d'))
@@ -126,8 +117,8 @@ def place_order(request, total=0, quantity=0,):
                 'order': order,
                 'cart_items': cart_items,
                 'total': total,
-                'tax': tax,
-                'grand_total': grand_total,
+                # 'tax': tax,
+                # 'grand_total': grand_total,
             }
             return render(request, 'orders/payments.html', context)
     else:
