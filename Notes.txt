@@ -4,7 +4,6 @@ https://www.youtube.com/playlist?list=PL-51WBLyFTg0omnamUjL1TCVov7yDTRng
 
 - Убрать поле username в MyUser ???
 - Отладить в регистрации активацию по email. Еще это есть в orders/views
-- Сделать перелистывание картинок
 - Переделать карточки товаров. Добавить пункт "В наличии"
 - Убрать ui.css. Оставить только бутстрап
 - Сделать работающей кнопку в корзину на товарах
@@ -23,3 +22,4 @@ https://www.youtube.com/playlist?list=PL-51WBLyFTg0omnamUjL1TCVov7yDTRng
 
 
 + Сделать картинку по умолчанию для пользователя
++ Сделать перелистывание картинок
